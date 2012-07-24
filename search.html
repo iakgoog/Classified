@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Classified</title>
+</head>
+<body>
+
+    <!--++++++++++++++++++++++++++++++++++++++++ SEARCH ++++++++++++++++++++++++++++++++++++++++-->
+    <div data-role="page" data-theme="b" id="searchPage">
+        <div data-theme="b" data-role="header">
+            <h3>Search</h3>
+        </div>
+	<!--++++++++++++++++++++++++++++++++++++++++ SEARCH OPTION PANEL ++++++++++++++++++++++++++++++++++++++++-->            
+		<div data-role="content" style="padding: 5%" id="contentSearchPanel">
+			
+		        <div data-role="collapsible-set" data-theme="b" data-content-theme="b">
+		        	<form id="searchOptionsForm">
+		        		
+		            <div data-role="collapsible" data-collapsed="true" align="center">
+		                <h3>Search by categories</h3>
+						<div data-role="fieldcontain">
+					  		<label id="categorySearchLabel" for="categorySearch"></label>		
+					      	<select id="categorySearch" name="categorySearch" data-native-menu="false" data-mini="true">
+					        	<option value="">Categories list</option>
+					        	<option value="">All categories</option>
+								<option value="Fashion">Fashion</option>
+								<option value="Motors">Motors </option>
+								<option value="Electronics">Electronics</option>
+								<option value="Collectibles & Arts">Collectibles &amp; Arts</option>
+								<option value="Home, Outdoors & Decor">Home, Outdoors &amp; Decor</option>
+								<option value="Entertainment">Entertainment</option>
+								<option value="Deals & Gifts">Deals &amp; Gifts</option>
+								<option value="Sporting Goods">Sporting Goods</option>
+							</select>
+		                </div>
+		            </div>
+		            
+		            <div data-role="collapsible" data-collapsed="true" align="center">
+		                <h3>Show items priced from</h3>
+	                	<div>
+							<input type="checkbox" class="checkbox" id="checkEnablePriced" name="checkEnablePriced" />
+							<label for="checkEnablePriced">Enable priced from search option</label>
+	                	</div>
+		                <div class="ui-grid-a">
+		                    <div id="divPricedFrom" class="ui-block-b">
+		                        <div data-role="fieldcontain">
+	                                <label id="pricedFromLabel" for="pricedFrom">from</label>
+	                                <input id="pricedFrom" name="pricedFrom" placeholder="บาท (baht)" value="" type="number" data-mini="true">
+		                        </div>
+		                    </div>
+		                    <div id="divPricedTo" class="ui-block-c">
+		                        <div data-role="fieldcontain">
+	                                <label id="pricedToLabel" for="pricedTo">to</label>
+	                                <input id="pricedTo" name="pricedTo" placeholder="บาท (baht)" value="" type="number" data-mini="true">
+                                </div>
+		                    </div>
+		                </div>
+		            </div>
+		            
+		            <div data-role="collapsible" data-collapsed="true" align="center">
+		            	<h3>Item nears me</h3>
+	                	<div>
+							<input type="checkbox" class="checkbox" id="checkEnableDistance" name="checkEnableDistance" />
+							<label for="checkEnableDistance">Enable distance search option</label>
+	                	</div>
+	                	<div id="divDistanceSearch">
+	                        <div data-role="fieldcontain">
+	                            <label for="distanceSearch">Items within</label>
+	                            <input id="distanceSearch" name="distanceSearch" placeholder="km." value="" type="number" data-mini="true">
+	                        </div>
+                        </div>
+	            	</div>
+	            	
+		            </form>
+		        </div>
+	        <div align="center" id="searchOptionsInvalid"></div>	
+			<div align="center"><a id="doSearch" name="doSearch" href="" data-role="button" data-inline="true" >Show Items</a></div>
+	   	</div>
+	
+		<div id="searchFooter" data-theme="a" data-role="footer" data-position="fixed">
+	        <div data-role="navbar" data-iconpos="top">
+	            <ul>
+	                <li><a href="profile.html" data-theme="" data-icon="home" data-transition="slide">Profile</a></li>
+	                <li><a href="shoot.html" data-theme="" data-icon="plus" data-transition="slide">Shoot</a></li>
+	                <li><a href="" data-theme="" data-icon="search" data-transition="slide" class="ui-btn-active ui-state-persist">Search</a></li>
+	            </ul>
+	        </div>
+	    </div>
+    </div>
+
+</body>
+</html>
