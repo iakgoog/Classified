@@ -1,6 +1,6 @@
 $('#searchPage').live('pageinit', function(event) {
     //---------------- reset search options ----------------
-    phoneGap.getLocation();
+    //phoneGap.getLocation();
     myVar.arrayItemList = [];
     myVar.searchOptions = {
         "addOptions" : "",
@@ -148,10 +148,10 @@ $('#searchPage').live('pageinit', function(event) {
         }
         myVar.searchOptions.catSearch = $('#categorySearch').val();
         myVar.searchOptions.addOptions = "1";
-        myVar.searchOptions.myLat = myVar.latVal;
-        myVar.searchOptions.myLng = myVar.lngVal;
-        //myVar.searchOptions.myLat = 18.783157;
-        //myVar.searchOptions.myLng = 98.978807;
+        //myVar.searchOptions.myLat = myVar.latVal;
+        //myVar.searchOptions.myLng = myVar.lngVal;
+        myVar.searchOptions.myLat = 18.783157;
+        myVar.searchOptions.myLng = 98.978807;
         /*alert("pricedFrom = " + myVar.searchOptions.pricedFrom);
         alert("pricedTo = " + myVar.searchOptions.pricedTo);
         alert("distance = " + myVar.searchOptions.distance);*/
