@@ -5,22 +5,71 @@
 </head>
 <body>
     <!--++++++++++++++++++++++++++++++++++++++++ SETTINGS PAGE ++++++++++++++++++++++++++++++++++++++++-->
-    <div data-role="page" data-theme="b" data-add-back-btn="true" id="optionsPage">
+    <div data-role="page" data-theme="b" id="optionsPage">
         <div data-theme="b" data-role="header">
             <h1>Settings</h1>
+            <a data-direction="reverse" data-transition="slide" data-role="button" data-theme="b" href="profile.html" data-icon="arrow-l">Back</a>
         </div>
-        
+<!-- ++++++++++++++++++++++++++++++++ SHOW SETTING LIST ++++++++++++++++++++++++++++++++ -->        
         <div data-role="content" style="padding: 5%">
 			<ul data-role="listview" data-inset="true">
-				<li><a href="logout.html" data-rel="dialog">Logout</a></li>
-				<!--li><a href="index.html">Audi</a></li>
-				<li><a href="index.html">BMW</a></li>
-				<li><a href="index.html">Cadillac</a></li>
-				<li><a href="index.html">Ferrari</a></li-->
+				<li><a href="" id="editProfile">Edit profile</a></li>
+				<li><a href="#passwordPopup" data-rel="popup" data-position-to="window">Change password</a></li>
+			</ul>
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#logoutPopup" data-rel="popup" data-position-to="window">Logout</a></li>
 			</ul>
         </div>
-        
-		
+<!-- ++++++++++++++++++++++++++++++++ PASSWORD POPUP PANEL ++++++++++++++++++++++++++++++++ -->
+		<div id="passwordPopup" data-role="popup" data-overlay-theme="a" class="ui-content" align="center">
+			<form id="changePasswordForm">
+			    <div data-role="fieldcontain" >
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<label id="ecurpassLabel" for="ecurpass" data-inline="true">Current password</label>
+						</div>
+						<div class="ui-block-b">
+							<input id="ecurpass" name="ecurpass" type="password" />
+						</div>
+				    </fieldset>
+			    </div>
+			    <div data-role="fieldcontain" >
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<label id="epassLabel" for="epass" data-inline="true">New password</label>
+						</div>
+						<div class="ui-block-b">
+							<input id="epass" name="epass" type="password" />
+						</div>
+				    </fieldset>
+			    </div>
+			    <div data-role="fieldcontain" >
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<label id="ecpassLabel" for="ecpass" data-inline="true">Confirm password</label>
+						</div>
+						<div class="ui-block-b">
+							<input id="ecpass" name="ecpass" type="password" />
+						</div>
+				    </fieldset>
+			    </div>
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a">
+						<a id="changePasswordCancel" href="options.html" data-role="button" data-rel="back" data-theme="d">Cancel</a>
+					</div>
+					<div class="ui-block-b">
+						<input type="submit" value="Submit" data-theme="a" />
+					</div>
+			    </fieldset>
+		    </form>
+		</div>
+<!-- ++++++++++++++++++++++++++++++++ LOGOUT POPUP PANEL ++++++++++++++++++++++++++++++++ -->
+		<div id="logoutPopup" data-role="popup" data-overlay-theme="a" class="ui-content" align="center">
+			<h3>Are you sure you want to logout?</h3>
+			<a id="logoutConfirmButton" href="" data-role="button" data-theme="b">Logout</a>       
+			<a href="options.html" data-role="button" data-rel="back" data-theme="c">Cancel</a>
+		</div>
+
     </div>
 </body>
 </html>

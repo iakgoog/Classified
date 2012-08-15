@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Classified</title>
+</head>
+<body>
+    <!--++++++++++++++++++++++++++++++++++++++++ ITEM FORM PAGE ++++++++++++++++++++++++++++++++++++++++-->
+    <div data-role="page" data-theme="b" data-add-back-btn="true" id="itemFormPage">
+        <div data-theme="b" data-role="header">
+            <h1>Item Details</h1>
+        </div>
+        
+	    <div id="divFormShoot" data-role="content" style="padding: 5%" >
+	    	<div align="center">
+		    	<form id="itemForm" >
+					<div data-role="fieldcontain">
+						<label id="itemNameUploadLabel" for="itemNameUpload">Name your item</label>		
+						<input id="itemNameUpload" name="itemNameUpload" type="text" />
+					</div>
+		    		
+					<div data-role="fieldcontain" >
+				  		<label id="itemCategoryUploadLabel" for="itemCategoryUpload">Categorize your item</label>		
+				      	<select id="itemCategoryUpload" name="itemCategoryUpload" data-native-menu="false">
+				        	<option value="">Browse categories</option>
+							<option value="Fashion">Fashion</option>
+							<option value="Motors">Motors </option>
+							<option value="Electronics">Electronics</option>
+							<option value="Collectibles & Arts">Collectibles &amp; Arts</option>
+							<option value="Home, Outdoors & Decor">Home, Outdoors &amp; Decor</option>
+							<option value="Entertainment">Entertainment</option>
+							<option value="Deals & Gifts">Deals &amp; Gifts</option>
+							<option value="Sporting Goods">Sporting Goods</option>
+						</select>
+				    </div>
+	
+					<div data-role="fieldcontain">
+						<label id="itemPriceUploadLabel" for="itemPriceUpload">Evaluate your item</label>		
+						<input id="itemPriceUpload" name="itemPriceUpload" type="text" placeholder="บาท (baht)" />
+					</div>
+	
+					<div data-role="fieldcontain">
+						<label id="itemDescriptionUploadLabel" for="itemDescriptionUpload">Describe your item</label>
+						<textarea cols="40" rows="8" id="itemDescriptionUpload" name="itemDescriptionUpload"></textarea>
+					</div>
+					
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<a id="uploadCancel" data-role="button" data-theme="d" href="">Reset</a>
+						</div>
+						<div class="ui-block-b">
+							<input type="submit" value="Submit" data-theme="a" />
+						</div>
+				    </fieldset>
+	    		</form>
+    		</div>
+    	</div>
+    </div>
+    
+</body>
+</html>

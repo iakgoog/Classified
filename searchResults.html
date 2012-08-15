@@ -4,26 +4,32 @@
 <title>Classified</title>
 </head>
 <body>
-	<div data-role="page" data-theme="b" data-add-back-btn="true" id="searchResultsPage">
+	<div data-role="page" data-theme="b" id="searchResultsPage">
 		<div data-theme="b" data-role="header">
-            <h3>Results</h3>
+            <h3>Items List</h3>
+            <a id="searchResultsBack" data-direction="reverse" data-role="button" data-theme="b" href="" data-icon="arrow-l">Back</a>
         </div>
         
 		<div data-role="content" style="padding: 5%" id="contentItemList">
-			<div align="center" id="itemNotFound"></div>
 			<div data-role="fieldcontain" align="center">
 			    <fieldset data-role="controlgroup" data-type="horizontal">
 			    	<legend>Sort:</legend>
 			    	<input type="checkbox" name="sortPrice" id="sortPrice" class="custom" />
 					<label for="sortPrice">Price</label>
-	
-					<input type="checkbox" name="sortDistance" id="sortDistance" class="custom" />
-					<label for="sortDistance">Distance</label>
-	
+					
+					<div id="divSortDistance">
+						<input type="checkbox" name="sortDistance" id="sortDistance" class="custom" />
+						<label for="sortDistance">Distance</label>
+					</div>
+					
+					<input type="checkbox" name="sortDate" id="sortDate" class="custom" />
+					<label for="sortDate">Date</label>
+					
 					<!--input type="checkbox" name="checkbox-8" id="checkbox-8" class="custom" />
 					<label for="checkbox-8">u</label-->
 			    </fieldset>
 		    </div>
+			<div align="center" id="itemNotFound"></div>		    
 			<ul id="itemList" data-role="listview" data-filter="false" data-divider-theme="b" data-inset="true" ></ul>
 		</div>
 	</div>

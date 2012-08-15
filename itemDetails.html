@@ -5,12 +5,24 @@
 </head>
 <body>
 
-	<div data-role="page" data-theme="b" data-add-back-btn="true" id="detailsPage">
+	<div data-role="page" data-theme="b" id="detailsPage">
 		<div data-theme="b" data-role="header">
 			<h1>Item Details</h1>
+			<a data-direction="reverse" data-transition="slide" data-role="button" data-theme="b" href="searchResults.html" data-icon="arrow-l">Back</a>
 		</div>
 	
 		<div data-role="content">
+			<div id="userOwn">
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a">
+						<a href="#deleteConfirmPopup" data-role="button" data-theme="d" data-rel="popup" data-position-to="window">Delete</a>
+					</div>
+					<div class="ui-block-b">
+						<a id="editItem" href="" data-role="button" data-theme="a" data-transition="slidedown">Edit</a>
+					</div>
+			    </fieldset>
+		    </div>
+			
 			<div align="center">
 				<img id="itemPic" style="max-width: 50%; max-width: 60%" />
 				<div id="itemDetails">
@@ -21,7 +33,13 @@
 				</div>
 			</div>
 		</div>
+		
+		<div id="deleteConfirmPopup" data-role="popup" data-overlay-theme="a" class="ui-content" align="center">
+			<h3>Are you sure you want to delete this item?</h3>
+			<a id="deleteConfirmButton" href="" data-role="button" data-theme="b">Yes</a>       
+			<a href="" data-role="button" data-rel="back" data-theme="c">No</a>
+		</div>
+		
 	</div>
-
 </body>
 </html>

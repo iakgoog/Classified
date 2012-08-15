@@ -12,63 +12,19 @@
         
 		<div data-role="content" style="padding: 5%" id="divShoot" >
 			<div align="center">
-				<img id="photo" src="" style="max-width: 80%; max-height: 50%" />
-				<a id="buttonShoot" name="buttonShoot" href="" data-role="button" data-inline="true" >Shoot Your Item</a>
-				<a id="buttonShootOK" name="buttonShootOK" href="" data-role="button" data-inline="true" >OK</a>
+				<img id="photo" src="" style="max-width: 90%; max-height: 60%" />
+			</div>
+			<div align="center">
+				<a id="buttonShoot" name="buttonShoot" href="" data-theme="a" data-role="button" >Shoot Your Item</a>
+			</div>
+			<div align="center">
+				<a id="buttonPick" name="buttonPick" href="" data-theme="d" data-role="button" >Pick From Library</a>
+			</div>
+			<div align="center">
+				<a id="buttonShootOK" name="buttonShootOK" href="" data-role="button" >OK</a>
 			</div>
 	    </div>
 	    
-	    <div data-role="content" style="padding: 5%" id="divFormShoot" >
-	    	<div align="center">
-		    	<form id="formShoot">
-					<div data-role="fieldcontain">
-						<label id="itemShootLabel" for="itemShoot">Name your item</label>		
-						<input id="itemShoot" name="itemShoot" type="text" />
-					</div>
-		    		
-					<div data-role="fieldcontain" >
-				  		<label id="categoryShootLabel" for="categoryShoot">Categorize your item</label>		
-				      	<select id="categoryShoot" name="categoryShoot">
-				        	<option value="">Browse categories</option>
-							<option value="Fashion">Fashion</option>
-							<option value="Motors">Motors </option>
-							<option value="Electronics">Electronics</option>
-							<option value="Collectibles & Arts">Collectibles &amp; Arts</option>
-							<option value="Home, Outdoors & Decor">Home, Outdoors &amp; Decor</option>
-							<option value="Entertainment">Entertainment</option>
-							<option value="Deals & Gifts">Deals &amp; Gifts</option>
-							<option value="Sporting Goods">Sporting Goods</option>
-						</select>
-				    </div>
-	
-					<div data-role="fieldcontain">
-						<label id="priceShootLabel" for="priceShoot">Evaluating the value of your item</label>		
-						<input id="priceShoot" name="priceShoot" type="text" placeholder="บาท (baht)" />
-					</div>
-	
-					<div data-role="fieldcontain">
-						<label id="descriptionShootLabel" for="descriptionShoot">Describe your item</label>
-						<textarea cols="40" rows="8" id="descriptionShoot" name="descriptionShoot"></textarea>
-					</div>
-					
-					<div data-role="fieldcontain">    
-				  		<input type="submit" value="Submit Your Item" data-inline="true"/>
-				    </div>
-		    	</form>
-	    	</div>
-	    </div>
-
-	    <div data-role="content" style="padding: 5%" id="contentDialog" name="contentDialog" align="CENTER" >	
-		   <div>Please fill in all required fields before submitting the form.</div>
-		   <a id="buttonOK" name="buttonOK" href="" data-role="button" data-inline="true">OK</a>
-	    </div>	<!-- contentDialog -->
-
-		<!-- contentTransition is displayed after the form is submitted until a response is received back. -->
-		<div data-role="content" style="padding: 5%" id="contentTransition" name="contentTransition">	
-			<div align="center"><h4>Uploading. Please wait...</h4></div>
-			<div align="center"><img src="img/ajax-loader-b.gif"/></div>
-		</div>	<!-- contentTransition -->
-        
 		<div data-theme="a" data-role="footer" data-position="fixed">
 	        <div data-role="navbar" data-iconpos="top">
 	            <ul>
