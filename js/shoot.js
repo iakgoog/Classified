@@ -21,6 +21,7 @@ $('#shootPage').live('pageinit', function(event) {
     $('#buttonShootOK').click(function() {
         //$('#divShoot').hide();
         //$('#divFormShoot').show();
+        myVar.userEditable = false;
         $.mobile.changePage("itemForm.html", { transition: "slide"});
     });
 
