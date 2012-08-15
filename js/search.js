@@ -1,7 +1,6 @@
 $('#searchPage').live('pageinit', function(event) {
     //---------------- reset search options ----------------
-    //phoneGap.getLocation();
-    myVar.arrayItemList = [];
+    myVar.arrayItemList.length = 0;
     myVar.searchOptions = {
         "addOptions" : "",
         "catSearch" : "",
@@ -9,13 +8,14 @@ $('#searchPage').live('pageinit', function(event) {
         "pricedTo" : "",
         "distance" : "",
         "myLat" : "",
-        "myLng" : ""
+        "myLng" : "",
+		"ownerId" : ""
     };
     myVar.checkButton = {
         "sortPrice" : false,
-        "sortDistance" : false,
+        "sortDate" : false,
+        "sortDistance" : false
     };
-
     
     $.validator.addMethod('lesserThan', function(value, element, param) {
         return ( parseInt(value,10) < parseInt($(param).val(),10) );
@@ -35,7 +35,6 @@ $('#searchPage').live('pageinit', function(event) {
             },
             pricedTo: {
                 required: "#checkEnablePriced:checked",
-                //min: 1,
                 greaterThan: "#pricedFrom",
             },
             distanceSearch: {
@@ -101,22 +100,14 @@ $('#searchPage').live('pageinit', function(event) {
 
     //---------------- keyup event handler ----------------
     $('#pricedTo').keyup(function(){
-        $('#pricedFrom').valid();
-        /*if($('#pricedTo').val()!="" && $('#pricedFrom').val()!="") {
-            checkGreater();
-        }*/
-        /*if($('#pricedFrom').valid() && $('#pricedTo').valid()) {
+        if($('#pricedFrom').valid() && $('#pricedTo').valid()) {
             $('#searchOptionsInvalid').html("");
-        }*/
+        }
     });
     $('#pricedFrom').keyup(function(){
-        $('#pricedTo').valid();
-        /*if($('#pricedTo').val()!="" && $('#pricedFrom').val()!="") {
-            checkGreater();
-        }*/
-        /*if($('#pricedFrom').valid() && $('#pricedTo').valid()) {
+        if($('#pricedFrom').valid() && $('#pricedTo').valid()) {
             $('#searchOptionsInvalid').html("");
-        }*/
+        }
     });
     $("#distanceSearch").keyup(function() {
         if($("#distanceSearch").valid()) {
@@ -142,22 +133,29 @@ $('#searchPage').live('pageinit', function(event) {
                 return false;
             } else {
                 myVar.searchOptions.distance = $('#distanceSearch').val();
-                //myVar.searchOptions.myLat = 18.783157;
-                //myVar.searchOptions.myLng = 98.978807;
             }
         }
         myVar.searchOptions.catSearch = $('#categorySearch').val();
-        myVar.searchOptions.addOptions = "1";
+        myVar.searchOptions.addOptions = "1"; //show every item which match this search options.
+        myVar.userEditable = false; //show every item which match this search options.
+        
+        //TEST ONLY
         //myVar.searchOptions.myLat = myVar.latVal;
         //myVar.searchOptions.myLng = myVar.lngVal;
-        myVar.searchOptions.myLat = 18.783157;
-        myVar.searchOptions.myLng = 98.978807;
-        /*alert("pricedFrom = " + myVar.searchOptions.pricedFrom);
-        alert("pricedTo = " + myVar.searchOptions.pricedTo);
-        alert("distance = " + myVar.searchOptions.distance);*/
+        //$.mobile.changePage("searchResults.html", { transition: "none"} );
         
-        $.mobile.changePage("searchResults.html", { transition: "none"} );
-        return false;
+        navigator.geolocation.getCurrentPosition(function(p) {
+            myVar.latVal = p.coords.latitude;
+            myVar.lngVal = p.coords.longitude;
+            
+            myVar.searchOptions.myLat = myVar.latVal;
+            myVar.searchOptions.myLng = myVar.lngVal;
+            
+            $.mobile.changePage("searchResults.html", { transition: "none"} );
+        }, function() {
+            alert("Failed to get location\nPlease check your internet connection");
+            return false;
+        });
     });
     
 });

@@ -1,6 +1,6 @@
 function init() {
     document.addEventListener("deviceready", onDeviceReady, true);
-    delete init;
+    //delete init;
 }
 
 var onDeviceReady = function() {
@@ -10,17 +10,17 @@ var onDeviceReady = function() {
 $('#indexPage').live('pageinit', function(event) {
     $('#loginForm').submit(function() {
         myVar.email = $('#lmail').val();
-        myVar.password = $('#lpass').val();
+        myVar.password = get.MD5($('#lpass').val());
         handleLogin();
         return false;
     });
-    
 });
 
 $('#indexPage').live('pageshow', function(event) {
     //++++++++++++++++ AUTO LOGIN ++++++++++++++++
-    checkPreAuth();
+    //checkPreAuth();
     //++++++++++++++++ AUTO LOGIN ++++++++++++++++
+    $('#divLoginForm').show();
 });
 
 function checkPreAuth() {
@@ -35,36 +35,34 @@ function handleLogin() {
     //disable the button so we can't resubmit while we wait
     //$("#submitLogin").attr("disabled","disabled");
     
-    //alert(email + ' : ' + password);
+    //alert(myVar.email + ' : ' + myVar.password);
     //console.log("click");
     if(myVar.email != '' && myVar.password!= '') {
         $.ajax({
-            url: 'http://www.iakgoog.comuv.com/checkLogin.php',
-            type : 'GET',
-            dataType: 'jsonp',
-            jsonp: 'jsoncallback',
-            data: { email: myVar.email, password: myVar.password },
-            timeout: 10000,
+            url: myVar.url+'/persons/login',
+            type : 'POST',
+            dataType: 'json',
+            data: JSON.stringify({
+                "email": myVar.email,
+                "password": myVar.password
+            }),
             success: function(data, status){
                 console.log(data);
                 if(data.status == 1) { //show that the username is NOT available
                     window.localStorage.setItem("classifiedEmail", myVar.email);
                     window.localStorage.setItem("classifiedPassword", myVar.password);
-                    delete data[status];
-                    $.each(data, function(key, value) {
-                        if(key != 'status') {
-                            myVar.username = value.username; 
-                            myVar.id = value.person_id;
-                            myVar.email = value.email;
-                            myVar.address =  value.address;
-                            myVar.province = value.province;
-                        }
-                    });
                     
+                    myVar.username = data.username; 
+                    myVar.userId = data.id;
+                    myVar.email = data.email;
+                    myVar.address =  data.address;
+                    myVar.province = data.province;
+
                     $('#divLoginLoading').html("");
-                    $.mobile.changePage("profile.html", { transition: "slide"} );
+                    $.mobile.changePage("profile.html", { transition: "slide"});
                 } else {
                     alert("Your login failed");
+                    $('#divLoginForm').show();
                 }
                 return;
             },
@@ -73,15 +71,13 @@ function handleLogin() {
                 //alert(jqXHR.status);
                 //alert(textStatus);
                 //alert(errorThrown);
-                //showLoginForm();
-                return;
+                $('#divLoginForm').show();
             },
             beforeSend: function() {
-                $('#submitLogin').prop("disabled", true);
+                $('#divLoginForm').hide();
                 $.mobile.showPageLoadingMsg();
             }, //Show spinner
             complete: function() {
-                $('#submitLogin').prop("disabled",false);
                 $.mobile.hidePageLoadingMsg();
             } //Hide spinner
         });
