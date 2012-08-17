@@ -2,10 +2,10 @@ var myVar = {
     //url : "http://localhost/api-classified",
     url : "http://iakgoog.comuv.com",
     photoData : "",
-    //latVal : null,
-    //lngVal : null,
-    latVal : 18.783157, //for test only (the office's latitude)
-    lngVal : 98.978807, //for test only (the office's longitude)
+    latVal : null,
+    lngVal : null,
+    //latVal : 18.783157, //for test only (the office's latitude)
+    //lngVal : 98.978807, //for test only (the office's longitude)
     windowH : null,
     windowW : null,
     userId : null,

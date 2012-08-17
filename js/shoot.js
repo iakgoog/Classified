@@ -11,13 +11,13 @@ $('#shootPage').live('pageinit', function(event) {
     });
     
     $('#buttonPick').click(function() {
-        //getImage("pick");
+        getImage("pick");
         //test area--------------
         //myVar.latVal = 18.783157;
         //myVar.lngVal = 98.978807;
         //$('#divFormShoot').show();
         //getPhotoPath();
-        $.mobile.changePage("itemForm.html", { transition: "slide"});
+        //$.mobile.changePage("itemForm.html", { transition: "slide"});
     });
 
     $('#buttonShootOK').click(function() {
