@@ -2,10 +2,10 @@ var myVar = {
     //url : "http://localhost/api-classified",
     url : "http://iakgoog.comuv.com",
     photoData : "",
-    latVal : null,
-    lngVal : null,
-    //latVal : 18.783157, //for test only (the office's latitude)
-    //lngVal : 98.978807, //for test only (the office's longitude)
+    //latVal : null,
+    //lngVal : null,
+    latVal : 18.783157, //for test only (the office's latitude)
+    lngVal : 98.978807, //for test only (the office's longitude)
     windowH : null,
     windowW : null,
     userId : null,
@@ -18,6 +18,7 @@ var myVar = {
     dataPath : null,
     dataFileName : null,
     arrayItemList : [],
+    getPhotoRes : false,
 	userEditable : false,
 	isChanged : false,
 	nameAvailable : false,
@@ -63,6 +64,7 @@ var myVar = {
         this.dataPath = null;
         this.dataFileName = null;
         this.arrayItemList = [];
+        this.getPhotoRes = false;
         this.userEditable = false;
         this.isChanged = false;
         this.nameAvailable = false;

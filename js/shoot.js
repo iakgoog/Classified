@@ -1,6 +1,8 @@
 $('#shootPage').live('pageinit', function(event) {
     $('#photo').prop('src', myVar.photoData);
-    $('#buttonShootOK').hide();
+    if(!myVar.getPhotoRes) {
+        $('#buttonShootOK').hide();
+    }
     
     $('#buttonShoot').click(function () {
         getImage("shoot");
@@ -9,13 +11,13 @@ $('#shootPage').live('pageinit', function(event) {
     });
     
     $('#buttonPick').click(function() {
-        getImage("pick");
+        //getImage("pick");
         //test area--------------
         //myVar.latVal = 18.783157;
         //myVar.lngVal = 98.978807;
         //$('#divFormShoot').show();
         //getPhotoPath();
-        //$.mobile.changePage("itemForm.html", { transition: "slide"});
+        $.mobile.changePage("itemForm.html", { transition: "slide"});
     });
 
     $('#buttonShootOK').click(function() {
@@ -27,7 +29,7 @@ $('#shootPage').live('pageinit', function(event) {
 
 });
 
-function getImage(mode) {
+function getImage(mode) { // (1)
     // Successfully aquired image data -> base64 encoded string of the image file
     var getSuccess = function(imageURI) {
         myVar.photoData = imageURI;
@@ -61,6 +63,7 @@ function getLocation() { // (2)
         myVar.latVal = p.coords.latitude;
         myVar.lngVal = p.coords.longitude;
         
+        myVar.getPhotoRes = true;
         $('#buttonShootOK').show();
     };
     

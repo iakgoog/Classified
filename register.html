@@ -5,15 +5,14 @@
 </head>
 <body>
 	<!--++++++++++++++++++++++++++++++++++++++++ REGISTER PAGE ++++++++++++++++++++++++++++++++++++++++-->	
-    <div data-role="page" data-theme="b" id="registerPage" data-add-back-btn="true">
+	<div data-role="page" data-theme="b" id="registerPage" data-add-back-btn="true">
 		<div data-theme="b" data-role="header">
 			<h1>Register</h1>
 		</div>
 		
 		<div data-role="content" style="padding: 5%" id="divRegForm">
-			 <form id="registerForm">
-				 	<!--legend>Registration form</legend-->
-				    <div id="divRegName" data-role="fieldcontain" >
+			<form id="registerForm" class="mc-active">
+		 		<div id="divRegName" data-role="fieldcontain" >
 						<!--div class="ui-grid-a">
 							<div class="ui-block-a">
 								<label id="rnameLabel" for="rname" data-inline="true">Username</label>
@@ -22,48 +21,54 @@
 								<input type="button" id="checkUserButton" value="Check availability" data-mini="true" data-inline="true">
 							</div>
 						</div-->
-						<label id="rnameLabel" for="rname" data-inline="true">Username</label>
-						<input id="rname" name="rname" type="text" />
-						<!--label class="error" generated="true" for="rname">Please enter a valid number.</label-->
-				    </div>
+					<label id="rnameLabel" for="rname" data-inline="true">Username</label>
+					<input id="rname" name="rname" type="text" />
+			    </div>
 				    
-				    <div id="divRegPass" data-role="fieldcontain" >
-				    	<label id="rpassLabel" for="rpass" data-inline="true">Password</label>
-				     	<input id="rpass" name="rpass" type="password" />
-				    </div>
-				    
-				    <div id="divRegCPass" data-role="fieldcontain" >
-				    	<label id="rcpassLabel" for="rcpass" data-inline="true">Confirm password</label>
-				     	<input id="rcpass" name="rcpass" type="password" />
-				    </div>
-				    
-					<div id="divRegMail" data-role="fieldcontain" >
-						<label id="rmailLabel" for="rmail" data-inline="true">Email</label>
-				     	<input id="rmail" name="rmail" type="text" />
-				    </div>
-				    
-				    <div id="divRegAddress" data-role="fieldcontain" >
-				     	<label id="raddressLabel" for="raddress" data-inline="true">Your address</label>
-				     	<textarea cols="40" rows="8" id="raddress" name="raddress" ></textarea>
-				    </div>
-				    
-				  	<div id="divRegProvince" data-role="fieldcontain" >
-				  		<label id="rprovinceLabel" for="rprovince">Your province</label>		
-				      	<select id="rprovince" name="rprovince" data-native-menu="false">
-				        	<option value="">เลือกจังหวัดของคุณ</option>
-						</select>
-				    </div>
-				    
-					<fieldset class="ui-grid-a">
-						<div class="ui-block-a">
-							<a id="regReset" data-role="button" data-theme="d" href="">Reset</a>
-						</div>
-						<div class="ui-block-b">
-							<!--a id="regSubmit" data-role="button" data-theme="a" href="">Submit</a-->
-							<input type="submit" value="Submit" data-theme="a" />
-						</div>
-				    </fieldset>
-			 </form>
+			    <div id="divRegPass" data-role="fieldcontain" >
+			    	<label id="rpassLabel" for="rpass" data-inline="true">Password</label>
+			     	<input id="rpass" name="rpass" type="password" />
+			    </div>
+			    
+			    <div id="divRegCPass" data-role="fieldcontain" >
+			    	<label id="rcpassLabel" for="rcpass" data-inline="true">Confirm password</label>
+			     	<input id="rcpass" name="rcpass" type="password" />
+			    </div>
+			    
+				<div id="divRegMail" data-role="fieldcontain" >
+					<label id="rmailLabel" for="rmail" data-inline="true">Email</label>
+			     	<input id="rmail" name="rmail" type="text" />
+			    </div>
+			    
+			    <div id="divRegAddress" data-role="fieldcontain" >
+			     	<label id="raddressLabel" for="raddress" data-inline="true">Your address</label>
+			     	<textarea cols="40" rows="8" id="raddress" name="raddress" ></textarea>
+			    </div>
+			    
+			  	<div id="divRegProvince" data-role="fieldcontain" >
+			  		<label id="rprovinceLabel" for="rprovince">Your province</label>		
+			      	<select id="rprovince" name="rprovince" data-native-menu="false">
+			        	<option value="">เลือกจังหวัดของคุณ</option>
+					</select>
+			    </div>
+			    
+				<div id="mc" align="center">
+					<p>Please draw the shape in the box to submit the form: (<a onclick="newShape()" href="#" title="Click for a new shape" id="mc-new">new shape</a>)</p>
+					<canvas id="mc-canvas" width="220" height="154" class="star">
+						Your browser doesn't support the canvas element - please visit in a modern browser.
+					</canvas>
+					<input type="hidden" id="mc-action" value="">
+				</div>
+			    
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a">
+						<a id="regReset" data-role="button" data-theme="d" href="">Reset</a>
+					</div>
+					<div class="ui-block-b">
+						<input disabled='disabled' type="submit" value="Submit" data-theme="a" />
+					</div>
+			    </fieldset>
+			</form>
 	    </div>
 	</div>
 </body>

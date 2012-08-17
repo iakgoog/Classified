@@ -142,7 +142,7 @@ $('#searchPage').live('pageinit', function(event) {
         //TEST ONLY
         //myVar.searchOptions.myLat = myVar.latVal;
         //myVar.searchOptions.myLng = myVar.lngVal;
-        //$.mobile.changePage("searchResults.html", { transition: "none"} );
+        //$.mobile.changePage("searchResults.html", { transition: "slide"} );
         
         navigator.geolocation.getCurrentPosition(function(p) {
             myVar.latVal = p.coords.latitude;
@@ -151,7 +151,7 @@ $('#searchPage').live('pageinit', function(event) {
             myVar.searchOptions.myLat = myVar.latVal;
             myVar.searchOptions.myLng = myVar.lngVal;
             
-            $.mobile.changePage("searchResults.html", { transition: "none"} );
+            $.mobile.changePage("searchResults.html", { transition: "slide"} );
         }, function() {
             alert("Failed to get location\nPlease check your internet connection");
             return false;

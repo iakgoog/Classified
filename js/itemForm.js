@@ -1,5 +1,5 @@
 $('#itemFormPage').live('pageinit', function(event) {
-    
+    console.log("THIS IS itemForm PAGE");
     if(myVar.userEditable) {
         itemEditForm();
     }
@@ -60,10 +60,11 @@ $('#itemFormPage').live('pageinit', function(event) {
             myVar.itemForm.itemPriceUpload = $('#itemPriceUpload').val();
             myVar.itemForm.itemDescriptionUpload = $('#itemDescriptionUpload').val();
             
-            $.mobile.changePage("itemUpload.html", { transition: "slidedown"});
+            $.mobile.changePage("itemUpload.html", { transition: "slide"});
         } else {
             return false;
         }
+        return false;
     });
     
 });

@@ -1,4 +1,7 @@
 $('#registerPage').live('pageinit', function(event) {
+//++++++++++++++++++++++++++++++++ INITIALIZE CAPTCHA ++++++++++++++++++++++++++++++++
+    newShape();
+    
 //++++++++++++++++++++++++++++++++read provinces.xml and display select menu provinces list
     $.get('xml/provinces.xml', function(provinces){
         $(provinces).find('province').each(function(){
@@ -204,17 +207,18 @@ $('#registerPage').live('pageinit', function(event) {
                 return false;
             }
         }
+		return false;
     });
 /*++++++++++++++++++++++++++++++++++++++++ RESET FORM ++++++++++++++++++++++++++++++++++++++++*/    
     $('#regReset').click(function() {
         registerValidator.resetForm();
         //$('#registerForm').clearForm(); //clear all fields
         if(!myVar.userEditable) {
-            if($('#rname').siblings(".custom").length) { 
-                $('#rname').siblings(".custom").remove();
+            if($('#rname').siblings('.custom').length) { 
+                $('#rname').siblings('.custom').remove();
             }
-            if($('#rmail').siblings(".custom").length) { 
-                $('#rmail').siblings(".custom").remove();
+            if($('#rmail').siblings('.custom').length) { 
+                $('#rmail').siblings('.custom').remove();
             }
             $('#rname').clearForm();
             $('#rmail').clearForm();
@@ -223,8 +227,12 @@ $('#registerPage').live('pageinit', function(event) {
         }
         $('#raddress').clearForm();
 //++++++++++++++++ select tag need to be refreshed if option's value is changed programmatically ++++++++++++++++        
-        $('#rprovince :first-child').prop('selected','selected');
-        $('#rprovince').selectmenu("refresh");
+        $('#rprovince :first-child').prop('selected', 'selected');
+        $('#rprovince').selectmenu('refresh');
+/*++++++++++++++++++++++++++++++++++++++++ RESET CAPTCHA ++++++++++++++++++++++++++++++++++++++++*/    
+        newShape();
+        $('#registerForm').find('input[type=submit]').prop('disabled', 'disabled');
+        $('#registerForm').find('input[type=submit]').button('refresh');
     });
     
 });
@@ -255,17 +263,17 @@ function uploadProfileForm() {
         success: function(data, status) {
             if(myVar.userEditable) {
                 alert("Your profile has been saved");
-                $.mobile.changePage("options.html", {transition : "slide"});
+                $.mobile.changePage("options.html", { transition : "slide", reverse: true });
             } else {
                 alert("Register success");
-                $.mobile.changePage("index.html", {transition : "slide"});
+                $.mobile.changePage("index.html", { transition : "slide", reverse: true });
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
             //alert('An unknown error occurred while processing the request on the server. The status returned from the server was: \n '+textStatus+' - '+errorThrown);
             alert('data upload FAILED\ntextStatus: '+textStatus+'\nerrorThrown: '+errorThrown);
             if(myVar.userEditable) {
-                $.mobile.changePage("options.html", {transition : "slide"});
+                $.mobile.changePage("options.html", {transition : "slide", reverse: true });
             } else {
                 return false;
             }
@@ -290,4 +298,12 @@ function setEditableField() {
     $('#rname').addClass("disabled");
     $('#rmail').prop('disabled','disabled');
     $('#rmail').addClass("disabled");
+}
+/*++++++++++++++++++++++++++++++++++++++++ INITIALIZED CAPTCHA ++++++++++++++++++++++++++++++++++++++++*/    
+function newShape() {
+    $('#registerForm').motionCaptcha({
+        shapes: ['triangle', 'x', 'rectangle', 'circle', 'check', 'zigzag', 'arrow', 'delete', 'pigtail', 'star']
+    });    
+    var shapes = ['triangle', 'x', 'rectangle', 'circle', 'check', 'zigzag', 'arrow', 'delete', 'pigtail', 'star'];
+    $('#mc-canvas').prop('class', shapes[Math.floor(Math.random()*10)]);
 }

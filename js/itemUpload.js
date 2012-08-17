@@ -1,5 +1,4 @@
 $('#itemUploadPage').live('pageshow', function(event) {
-    console.log("itemFormTransitionPage was bind with pageshow");
     processUploadItem();
 });
 
@@ -15,7 +14,7 @@ function processUploadItem() {
     }
 }
 
-function getPhotoPath() { // (1)
+function getPhotoPath() { // (1) if success do (2)
     var d = new Date();
     var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     myVar.dataPath = "upload/"+d.getFullYear()+"/"+monthName[d.getMonth()]+"/";
@@ -27,7 +26,7 @@ function getPhotoPath() { // (1)
     //uploadInfo();
 }
 
-function uploadPhoto() { // (2)
+function uploadPhoto() { // (2) if success do (3)
     var sendSuccess = function(r) {
         myVar.photoData = "";
         console.log("Code = " + r.responseCode);
@@ -39,10 +38,8 @@ function uploadPhoto() { // (2)
     
     var sendFail = function(error) {
         $.mobile.hidePageLoadingMsg(); //Hide spinner
-        //alert('An unknown error occurred while processing the request on the server. The status returned from the server was: \n ' + error.code);
         alert('uploadPhoto FAILED\nerror.code: '+error.code);
-        //$.mobile.changePage("itemForm.html", { transition: "slide"} );
-        window.history.back();
+        $.mobile.changePage("itemForm.html", { transition: "slide", reverse: true });
     };
     
     var options = new FileUploadOptions();
@@ -60,13 +57,13 @@ function uploadPhoto() { // (2)
     ft.upload(myVar.photoData, myVar.url+"/upload-photo", sendSuccess, sendFail, options);
 }
 
-function uploadInfo() { // (3)
+function uploadInfo() { // (3) last item upload process
     if(myVar.userEditable) {
         var itemData = JSON.stringify({
             "itemName": myVar.itemForm.itemNameUpload,
             "category": myVar.itemForm.itemCategoryUpload,
             "price": myVar.itemForm.itemPriceUpload,
-            "description": myVar.itemForm.itemDescriptionUpload,
+            "description": myVar.itemForm.itemDescriptionUpload
         });
         var itemDataPath = '/update-item/'+myVar.itemForm.itemId;
     } else {
@@ -94,15 +91,17 @@ function uploadInfo() { // (3)
             if(myVar.userEditable) {
                 myVar.prepareAjaxReload();
                 alert("Item ["+myVar.itemForm.itemNameUpload+"] has been updated");
-                $.mobile.changePage("itemDetails.html?id="+myVar.itemForm.itemId, { transition: "slideup"} );
+                $.mobile.changePage("itemDetails.html?id="+myVar.itemForm.itemId, { transition: "slide", reverse: true });
             } else {
+                console.log(">>>>>>>>>>>>>>>>>>>>>> DONE UPLOAD");
+                myVar.getPhotoRes = false;
                 alert("Item ["+myVar.itemForm.itemNameUpload+"] has been uploaded");
-                $.mobile.changePage("shoot.html", { transition: "slideup"} );
-            }
+                $.mobile.changePage("shoot.html", { transition: "slide", reverse: true });
+            }            
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            //alert('An unknown error occurred while processing the request on the server. The status returned from the server was: \n '+textStatus+' - '+errorThrown);
             alert('item upload FAILED\ntextStatus: '+textStatus+'\nerrorThrown: '+errorThrown);
+            $.mobile.changePage("itemForm.html", { transition: "slide", reverse: true });
         },
         beforeSend: function() { },
         complete: function() { $.mobile.hidePageLoadingMsg(); } //Hide spinner

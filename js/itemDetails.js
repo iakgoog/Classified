@@ -43,7 +43,7 @@ function dpComplete() { $.mobile.hidePageLoadingMsg(); } //Hide spinner
 function dpError(xhr, ajaxOptions, thrownError) {
     //alert('An unknown error occurred while processing the request on the server. The status returned from the server was: \n '+ajaxOptions+' - '+thrownError);
     alert('get item details FAILED\ntextStatus: '+textStatus+'\nerrorThrown: '+errorThrown);
-    $.mobile.changePage("searchResults.html", { transition: "none"} );
+    $.mobile.changePage("searchResults.html", { transition: "slide"} );
 }
 
 function getUrlVars() {

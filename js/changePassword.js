@@ -92,6 +92,7 @@ $('#changePasswordPage').live('pageinit', function(event) {
         } else {
             return false;
         }
+		return false;
     });    
 });
 //++++++++++++++++++++++++++++++++ FUNCTION ++++++++++++++++++++++++++++++++
